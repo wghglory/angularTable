@@ -1,6 +1,6 @@
 {
     "PAGE_TITLE": "员工地址簿",
-    "PAGE_CONTENT": "欢迎使用Angular表格！",
+    "PAGE_CONTENT": "欢迎使用Angular表格",
     "directives.language-select.Language": "语言",
 
     "li1": "请在服务器环境下运行，否则浏览器可能会拒绝cross request本地data.json文件",
