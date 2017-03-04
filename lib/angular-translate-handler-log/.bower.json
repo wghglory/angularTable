@@ -17,6 +17,6 @@
     "commit": "ae88f29b43c025e91f2eabc91ff0d6a9f6c26830"
   },
   "_source": "https://github.com/PascalPrecht/bower-angular-translate-handler-log.git",
-  "_target": "*",
+  "_target": "2.15.0",
   "_originalSource": "angular-translate-handler-log"
 }

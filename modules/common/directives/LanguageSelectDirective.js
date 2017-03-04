@@ -23,9 +23,9 @@ angular.module('addressbookApp')
                 $scope.localesDisplayNames = LocaleService.getLocalesDisplayNames();
                 $scope.visible = $scope.localesDisplayNames && $scope.localesDisplayNames.length > 1;
 
-                $scope.changeLanguage = (locale) => {
-                    LocaleService.setLocaleByDisplayName(locale);
-                    $scope.$emit('reloadDataEvent', locale); // when changing language, employeeController reloads data
+                $scope.changeLanguage = (lang) => {
+                    LocaleService.setLocaleByDisplayName(lang);  //中文 English
+                    $scope.$emit('reloadDataEvent', lang); // when changing language, employeeController reloads data
                 };
             }
         };

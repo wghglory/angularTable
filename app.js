@@ -1,7 +1,8 @@
 let app = angular.module('addressbookApp', [
         'ngCookies',
         'pascalprecht.translate',
-        'tmh.dynamicLocale'
+        'tmh.dynamicLocale',
+        'ngAnimate'
     ])
     .constant('DEBUG_MODE', /*DEBUG_MODE*/ true /*DEBUG_MODE*/ )
     .constant('LOCALES', {
@@ -12,13 +13,13 @@ let app = angular.module('addressbookApp', [
         'preferredLocale': 'en'
     })
     // Angular debug info
-    .config(function($compileProvider, DEBUG_MODE) {
+    .config(($compileProvider, DEBUG_MODE) => {
         if (!DEBUG_MODE) {
             $compileProvider.debugInfoEnabled(false); // disables AngularJS debug info
         }
     })
     // Angular Translate
-    .config(function($translateProvider, DEBUG_MODE, LOCALES) {
+    .config(($translateProvider, DEBUG_MODE, LOCALES) => {
         if (DEBUG_MODE) {
             $translateProvider.useMissingTranslationHandlerLog(); // warns about missing translates
         }

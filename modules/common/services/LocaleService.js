@@ -1,5 +1,5 @@
 /**
- * @name addressbookApp.factory:LocaleService
+ * @name addressbookApp.service:LocaleService
  * @description
  * # LocaleService
  * Service for setting/getting current locale
@@ -9,22 +9,26 @@ angular.module('addressbookApp')
         'use strict';
 
         let localesObj = LOCALES.locales;
+        /*{
+            'zh': '中文',
+            'en': 'English'
+        }*/
 
         // locales and locales display names
-        let _LOCALES = Object.keys(localesObj);
-        if (!_LOCALES || _LOCALES.length === 0) {
-            console.error('There are no _LOCALES provided');
+        let _locales = Object.keys(localesObj);   //zh, en
+        if (!_locales || _locales.length === 0) {
+            console.error('There are no _locales provided');
         }
-        let _LOCALES_DISPLAY_NAMES = [];
-        _LOCALES.forEach((locale) => {
-            _LOCALES_DISPLAY_NAMES.push(localesObj[locale]);
+        let _localesDisplayNames = [];
+        _locales.forEach((locale) => {
+            _localesDisplayNames.push(localesObj[locale]);
         });
 
         let currentLocale = $translate.proposedLanguage(); // because of async loading
 
         // METHODS
         let checkLocaleIsValid = (locale) => {
-            return _LOCALES.indexOf(locale) !== -1;
+            return _locales.indexOf(locale) !== -1;
         };
 
         let setLocale = (locale) => {
@@ -33,7 +37,7 @@ angular.module('addressbookApp')
                 return;
             }
             startLoadingAnimation();
-            currentLocale = locale;
+            currentLocale = locale;  //zh, en
             $translate.use(locale);
         };
 
@@ -41,8 +45,7 @@ angular.module('addressbookApp')
          * Stop application loading animation when translations are loaded
          */
         let $html = angular.element(document);
-        console.log($html)
-        let LOADING_CLASS = 'app-loading';
+        const LOADING_CLASS = 'app-loading';
 
         function startLoadingAnimation() {
             $html.addClass(LOADING_CLASS);
@@ -65,17 +68,17 @@ angular.module('addressbookApp')
 
         return {
             getLocaleDisplayName: () => {
-                return localesObj[currentLocale];
+                return localesObj[currentLocale];  //中文 English
             },
             setLocaleByDisplayName: (localeDisplayName) => {
                 setLocale(
-                    _LOCALES[
-                        _LOCALES_DISPLAY_NAMES.indexOf(localeDisplayName) // get locale index
+                    _locales[
+                        _localesDisplayNames.indexOf(localeDisplayName) // get locale index
                     ]
                 );
             },
             getLocalesDisplayNames: () => {
-                return _LOCALES_DISPLAY_NAMES;
+                return _localesDisplayNames;  //中文 English
             }
         };
     });
