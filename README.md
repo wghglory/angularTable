@@ -64,6 +64,11 @@ To be honest, I never implement an app with internalization although I ever hear
 
 Internalization, here I mean shifting between English and Chinese, needs resources for both of them, and I just learnt that we can use angular-translate to do it.
 
+
+## Screenshot
+
+![](http://om1o84p1p.bkt.clouddn.com/2017-03-03-14886111954269.jpg)
+
 ## Instruction and Features
 
 1. Assume using core angular, no angular-ui-grid for filtering, editing, etc
