@@ -12,9 +12,7 @@ angular.module('addressbookApp')
             restrict: 'A',
             replace: true,
             template: `<div class="language-select" ng-if="visible">
-                            <label>
-                                {{"directives.language-select.Language" | translate}}:
-                            </label>
+                            <label>{{"directives.language-select.Language" | translate}}:&nbsp;</label>
                             <select ng-model="currentLocaleDisplayName" ng-options="localesDisplayName for localesDisplayName in localesDisplayNames" ng-change="changeLanguage(currentLocaleDisplayName)">
                             </select>
                       </div>`,

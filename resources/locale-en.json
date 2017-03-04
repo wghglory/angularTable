@@ -4,7 +4,7 @@
     "directives.language-select.Language": "Language",
 
     "li1": "Make sure running in server, since angular reads data.json and Cross origin requests work only in server",
-    "li2": "localization is achieved by introducting angular-i18n/angular-locale_zh.js, so in this case salary is ￥ instead of $. Currency will change when shifting language",
+    "li2": "localization is achieved by introducting angular-i18n/angular-locale_zh.js. Currency will change when shifting language (Salary column)",
     "li3": "click table header to sort asc/desc",
     "li4": "select all/none by clicking first checkbox",
     "li5": "one by one check every checkbox will automatically check first checkbox",

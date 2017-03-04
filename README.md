@@ -4,24 +4,24 @@
 
 #### Explain how to structure an UI project in MVC model with a simple example.
 
-- if you work with nodejs, UI project (this demo) can be placed into a folder call **"public"**,
-- css => all your style files, including bootstrap, your custom css, site.css in this case,
-- deparment, employee and folders like this are for different modules, each of them may contains controllers, directives, filters, services, views, etc
-- my naming convention is module.client.controller.js, because it will be easier to distinguish from nodejs server controller, which I call it moduel.server.controller.js
-- filters, directives folders are self-explanatory, views usually are for SPA implementation by angular routing.
-- lib contains all third-party libraries, which can be installed by bower
-- app.js here is to bootstrap angularjs by injecting all modules
+- if working with nodejs, UI project (this demo) can be placed into a folder call **"public"**
+- css folder have all style files, including bootstrap, custom css(site.css in this case)
+- modules folder has different modules, like department, employee, each of them may contains controllers, directives, filters, services, views, etc. Common module may be used by other modules
+- my naming convention is module.client.controller.js, because it will be easier to distinguish from nodejs server controller, which I call it module.server.controller.js
+- filters, directives folders are self-explanatory, views usually are for SPA implementation by angular routing
+- lib contains all third-party libraries, which can be installed by bower. Some people call it scripts or bowerComponents
+- app.js is used to config angularjs by injecting modules needed
 - index.html is main page
 
-Above is for a small or middle project by using horizontal architecture. For larger project, vertical architecture is better. It's also recommended to put css, images, scripts inside a folder called "asset". If working with newest .net platform, these folders can be put into a folder called "www";
+Above is for a small or middle project by using horizontal architecture. For larger project, vertical architecture is better. It's also recommended to put css, images, scripts into a folder called "asset". If working with newest .net platform, these folders can be put into a folder called "www";
 
 #### Explain how AngularJS directive is used, and give a couple of use cases
 
 directive includes built-in directives and custom ones.
 
-**built-in directives** like ng-app, ng-model, ng-if, ng-controller, are decorated on the html tag as attributes usually. The use cases can be found in this demo project
+**built-in directives** like ng-app, ng-model, ng-if, ng-controller, are decorated on the html tag as attributes usually. They define the behavior of that html tag. The use cases can be found in index.html
 
-**custom directives**: This is a better way when you want to create a reusable html markup. It's just a partial view in .net. Below is an example and you can use it as `<myDir></myDiv>`
+**custom directives** are usually used when you want to create a reusable html markup. It's like a partial view in .net MVC framework. Below is an example and you can use it as `<myDir></myDiv>`. I also created LanguageSelectDirective under modules/common/directives
 
 ```javascript
 let app = angular.module('app', []);
@@ -62,7 +62,7 @@ so in the view, you can use {{name}} or ng-model="name" to achieve 2-way binding
 
 #### How to achieve internalization or localization?
 
-To be honest, I never implement an app with internalization although I ever heard angular has i18n and l10n for this purpose. Localization, from my understanding, is to use local symbols, e.g. $ is for US and ￥ is for China. This can be achieved by introducing **angular-locale_zh.js**.
+To be honest, I never implement an app with internalization although I ever heard angular has i18n and l10n for this purpose. Localization, from my understanding, is to use local symbols. e.g. $ is US currency while ￥ is for China. This can be achieved by introducing **angular-locale_zh.js**.
 
 Internalization, here I mean shifting between English and Chinese, needs resources for both of them, and I just learnt that we can use angular-translate to do it.
 
@@ -70,7 +70,7 @@ Internalization, here I mean shifting between English and Chinese, needs resourc
 
 1. Assume using core angular, no angular-ui-grid for filtering, editing, etc
 2. **Add**: add button will add a blank row. After typing anything, assume clicking "Save" will save new record
-3. **Save**: Assume saving one row once
+3. **Save**: Save modified record and save new record
 4. Double click cellphone cell, edit that row; double click that cell in that row again, quit edit mode
 5. Double click cellphone cell and then double click cellphone in another row => quitting edit mode of previous row and enable edit for current row
 6. select all checkboxes/none and multi-delete
