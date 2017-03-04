@@ -69,8 +69,8 @@ Internalization, here I mean shifting between English and Chinese, needs resourc
 ## Instruction and Features
 
 1. Assume using core angular, no angular-ui-grid for filtering, editing, etc
-2. **Add**: add button will add a blank row. After typing anything, assume clicking "Update" will save new record (Update is like Save button)
-3. **Update**: Assume updating one row once
+2. **Add**: add button will add a blank row. After typing anything, assume clicking "Save" will save new record
+3. **Save**: Assume saving one row once
 4. Double click cellphone cell, edit that row; double click that cell in that row again, quit edit mode
 5. Double click cellphone cell and then double click cellphone in another row => quitting edit mode of previous row and enable edit for current row
 6. select all checkboxes/none and multi-delete

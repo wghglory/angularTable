@@ -106,7 +106,7 @@
                     </td>
                     <td>
                         <span ng-show="!emp.showEdit">{{emp.salary | currency}}</span>
-                        <input ng-show="emp.showEdit" type="text" ng-model="emp.salary" class="form-control">
+                        <input ng-show="emp.showEdit" type="money" ng-model="emp.salary" class="form-control">
                     </td>
                     <td>
                         <span ng-show="!emp.showEdit">{{emp.phone.office}}</span>
@@ -118,11 +118,10 @@
                     </td>
                 </tr>
             </tbody>
-            </tr>
         </table>
         <button type="button" class="btn btn-danger" ng-click="delete()">Delete</button>
         <button type="button" class="btn btn-primary" ng-click="add()">Add</button>
-        <button type="button" class="btn btn-success" ng-click="update()">Update</button>
+        <button type="button" class="btn btn-success" ng-click="save()">Save</button>
         <p class="alert alert-success" ng-show="message">{{message}}</p>
     </div>
 </body>

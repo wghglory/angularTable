@@ -74,8 +74,8 @@ app.controller('employeeController', ['$scope', 'employeeService', function($sco
         });
     };
 
-    // "Update Button": 1 save new record, 2 update modified record
-    $scope.update = () => {
+    // "Save Button": 1 save new record, 2 update modified record
+    $scope.save = () => {
 
         if ($scope.selectedIds.length) {
             // update modified record, showEdit is true for that row
@@ -85,7 +85,7 @@ app.controller('employeeController', ['$scope', 'employeeService', function($sco
                 if (emp.id === id) {
                     emp.showEdit = false;
                     emp.selected = false;
-                    let message = `update record => id:${emp.id}, name:${emp.name}, location:${emp.location}, office: ${emp.office}, officeLine:${emp.phone.office}, cellphone:${emp.phone.cell}`;
+                    let message = `update record => id:${emp.id}, name:${emp.name}, location:${emp.location}, office: ${emp.office}, salary: ${emp.salary}, officeLine:${emp.phone.office}, cellphone:${emp.phone.cell}`;
                     $scope.message = message;
                     break;
                 }
@@ -98,10 +98,11 @@ app.controller('employeeController', ['$scope', 'employeeService', function($sco
                 name,
                 office,
                 location,
-                phone
+                phone,
+                salary
             } = $scope.Employees[$scope.Employees.length - 1];
             $scope.Employees[$scope.Employees.length - 1].showEdit = false;
-            $scope.message = `new record => name:${name}, location:${location}, office: ${office}, officeLine:${phone.office}, cellphone:${phone.cell}, should be sent to server using $http/$resource etc in real world`;
+            $scope.message = `new record => name:${name}, location:${location}, office: ${office}, salary: ${emp.salary}, officeLine:${phone.office}, cellphone:${phone.cell}, should be sent to server using $http/$resource etc in real world`;
         }
     };
 
@@ -131,6 +132,7 @@ app.controller('employeeController', ['$scope', 'employeeService', function($sco
             "name": "",
             "location": "",
             "office": "",
+            "salary": "",
             "phone": {
                 "office": "",
                 "cell": ""

@@ -9,7 +9,7 @@
     "li4": "select all/none by clicking first checkbox",
     "li5": "one by one check every checkbox will automatically check first checkbox",
     "li6": "multi-delete selected rows",
-    "li7": "add button will add an empty row, type on the fields and click update to save. Please note clicking add button multiple times without before updating won't work well",
+    "li7": "add button will add an empty row, type on the fields and click save. Please note clicking add button multiple times without saving won't work well",
     "li8": "clicking only cellphone cell enables editing mode",
 
     "Name": "Name",
