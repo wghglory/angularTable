@@ -1,0 +1,57 @@
+[
+    {
+        "id": 1,
+        "name": "张凯利",
+        "location": "上海",
+        "office": "c-103",
+        "phone": {
+            "office": "x34234",
+            "cell": "123123123"
+        },
+        "salary": 80000
+    },
+    {
+        "id": 2,
+        "name": "迈克",
+        "location": "北京",
+        "office": "a-102",
+        "phone": {
+            "office": "y32473",
+            "cell": "333333333"
+        },
+        "salary": 50000
+    },
+    {
+        "id": 3,
+        "name": "王光辉",
+        "location": "美国",
+        "office": "303",
+        "phone": {
+            "office": "x4860",
+            "cell": "6192145430"
+        },
+        "salary": 70000
+    },
+    {
+        "id": 4,
+        "name": "张明",
+        "location": "英国",
+        "office": "111",
+        "phone": {
+            "office": "90903",
+            "cell": "194543330"
+        },
+        "salary": 60000
+    },
+    {
+        "id": 5,
+        "name": "爱德蒙",
+        "location": "印度",
+        "office": "201",
+        "phone": {
+            "office": "m8360",
+            "cell": "8975454375"
+        },
+        "salary": 100000
+    }
+]

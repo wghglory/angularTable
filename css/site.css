@@ -1,0 +1,24 @@
+.alert {
+    margin-top: 20px;
+}
+
+.caret-reversed {
+    -ms-transform: rotate(180deg);
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
+
+.table>thead>tr>th, .table>tbody>tr>td {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.container {
+    position: relative;
+}
+
+.goRight {
+    position: absolute;
+    right: 0;
+    top: 28px;
+}

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en" data-ng-app="addressbookApp">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{{"PAGE_TITLE" | translate}}</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/site.css">
+</head>
+
+<body>
+    <div class="container" data-ng-controller="employeeController">
+        <h1>{{"PAGE_CONTENT" | translate}}</h1>
+        <div ng-translate-language-select class="goRight"></div>
+        <ol>
+            <!-- li{{{"li$" | translate}}}*8 -->
+            <li>{{"li1" | translate}}</li>
+            <li>{{"li2" | translate}}</li>
+            <li>{{"li3" | translate}}</li>
+            <li>{{"li4" | translate}}</li>
+            <li>{{"li5" | translate}}</li>
+            <li>{{"li6" | translate}}</li>
+            <li>{{"li7" | translate}}</li>
+            <li>{{"li8" | translate}}</li>
+        </ol>
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr class="info">
+                    <th rowspan="2"><input type="checkbox" ng-click="toggleAll()" ng-model="isAllSelected"></th>
+                    <th rowspan="2">ID</th>
+                    <th rowspan="2">
+                        <a href="#" ng-click="sortType = 'name'; sortReverse = !sortReverse">
+                            {{"Name" | translate}}
+                            <span ng-show="sortType == 'name' && !sortReverse" class="caret"></span>
+                            <span ng-show="sortType == 'name' && sortReverse" class="caret caret-reversed"></span>
+                        </a>
+                    </th>
+                    <th rowspan="2">
+                        <a href="#" ng-click="sortType = 'location'; sortReverse = !sortReverse">
+                            {{"Location" | translate}}
+                            <span ng-show="sortType == 'location' && !sortReverse" class="caret"></span>
+                            <span ng-show="sortType == 'location' && sortReverse" class="caret caret-reversed"></span>
+                        </a>
+                    </th>
+                    <th rowspan="2">
+                        <a href="#" ng-click="sortType = 'office'; sortReverse = !sortReverse">
+                            {{"Office" | translate}}
+                            <span ng-show="sortType == 'office' && !sortReverse" class="caret"></span>
+                            <span ng-show="sortType == 'office' && sortReverse" class="caret caret-reversed"></span>
+                        </a>
+                    </th>
+                    <th rowspan="2">
+                        <a href="#" ng-click="sortType = 'salary'; sortReverse = !sortReverse">
+                            {{"Salary" | translate}}
+                            <span ng-show="sortType == 'salary' && !sortReverse" class="caret"></span>
+                            <span ng-show="sortType == 'salary' && sortReverse" class="caret caret-reversed"></span>
+                        </a>
+                    </th>
+                    <th colspan="2">{{"Phone" | translate}}</th>
+                </tr>
+                <tr class="info">
+                    <th>
+                        <a href="#" ng-click="sortType = 'phone.office'; sortReverse = !sortReverse">
+                            {{"office" | translate}}
+                            <span ng-show="sortType == 'phone.office' && !sortReverse" class="caret"></span>
+                            <span ng-show="sortType == 'phone.office' && sortReverse" class="caret caret-reversed"></span>
+                        </a>
+                    </th>
+                    <th>
+                        <a href="#" ng-click="sortType = 'phone.cell'; sortReverse = !sortReverse">
+                            {{"cell" | translate}}
+                            <span ng-show="sortType == 'phone.cell' && !sortReverse" class="caret"></span>
+                            <span ng-show="sortType == 'phone.cell' && sortReverse" class="caret caret-reversed"></span>
+                        </a>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="emp in Employees | orderBy:sortType:sortReverse">
+                    <td><input type="checkbox" ng-click="saveIds(emp.id)" ng-model="emp.selected" ng-change="optionToggled()"></td>
+                    <td>{{emp.id}}</td>
+                    <td ng-dblclick="toggleEdit(emp)">
+                        <span ng-show="!emp.showEdit">{{emp.name}}</span>
+                        <input ng-show="emp.showEdit" type="text" ng-model="emp.name" class="form-control">
+                    </td>
+                    <td ng-dblclick="toggleEdit(emp)">
+                        <span ng-show="!emp.showEdit">{{emp.location}}</span>
+                        <input ng-show="emp.showEdit" type="text" ng-model="emp.location" class="form-control">
+                    </td>
+                    <td ng-dblclick="toggleEdit(emp)">
+                        <span ng-show="!emp.showEdit">{{emp.office}}</span>
+                        <input ng-show="emp.showEdit" type="text" ng-model="emp.office" class="form-control">
+                    </td>
+                    <td ng-dblclick="toggleEdit(emp)">
+                        <span ng-show="!emp.showEdit">{{emp.salary | currency}}</span>
+                        <input ng-show="emp.showEdit" type="text" ng-model="emp.salary" class="form-control">
+                    </td>
+                    <td ng-dblclick="toggleEdit(emp)">
+                        <span ng-show="!emp.showEdit">{{emp.phone.office}}</span>
+                        <input ng-show="emp.showEdit" type="phone" ng-model="emp.phone.office" class="form-control">
+                    </td>
+                    <td ng-dblclick="toggleEdit(emp)">
+                        <span ng-show="!emp.showEdit">{{emp.phone.cell}}</span>
+                        <input ng-show="emp.showEdit" type="phone" ng-model="emp.phone.cell" class="form-control">
+                    </td>
+                </tr>
+            </tbody>
+            </tr>
+        </table>
+        <button type="button" class="btn btn-danger" ng-click="delete()">Delete</button>
+        <button type="button" class="btn btn-primary" ng-click="add()">Add</button>
+        <button type="button" class="btn btn-success" ng-click="update()">Update</button>
+        <p class="alert alert-success" ng-show="message">{{message}}</p>
+    </div>
+</body>
+<!-- bower start -->
+<script src="lib/angular/angular.js"></script>
+<script src="lib/angular-translate/angular-translate.js"></script>
+<script src="lib/angular-cookies/angular-cookies.js"></script>
+<script src="lib/angular-translate-loader-static-files/angular-translate-loader-static-files.js"></script>
+<script src="lib/angular-translate-storage-cookie/angular-translate-storage-cookie.js"></script>
+<script src="lib/angular-translate-storage-local/angular-translate-storage-local.js"></script>
+<script src="lib/angular-translate-handler-log/angular-translate-handler-log.js"></script>
+<!-- <script src="lib/angular-i18n/angular-locale_zh.js"></script> -->
+<script src="lib/angular-dynamic-locale/src/tmhDynamicLocale.js"></script>
+<!-- bower end -->
+<!-- common start -->
+<script src="app.js"></script>
+<script src="modules/common/services/LocaleService.js"></script>
+<script src="modules/common/directives/LanguageSelectDirective.js"></script>
+<!-- common end -->
+<!-- modules start -->
+<script src="modules/employee/services/employee.client.service.js"></script>
+<script src="modules/employee/controllers/employee.client.controller.js"></script>
+<!-- modules end -->
+
+</html>

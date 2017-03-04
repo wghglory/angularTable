@@ -1,0 +1,15 @@
+{
+    "name": "Addressbook",
+    "version": "0.0.1",
+    "dependencies": {
+        "angular": "*",
+        "angular-i18n": "*",
+        "angular-translate": "*",
+        "angular-translate-loader-static-files": "*",
+        "angular-translate-storage-local": "*",
+        "angular-translate-handler-log": "*",
+        "angular-dynamic-locale": "*",
+        "angular-cookies": "*"
+
+    }
+}

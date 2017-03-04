@@ -1,0 +1,57 @@
+[
+    {
+        "id": 1,
+        "name": "Khali Zhang",
+        "location": "Shanghai",
+        "office": "c-103",
+        "phone": {
+            "office": "x34234",
+            "cell": "123123123"
+        },
+        "salary": 80000
+    },
+    {
+        "id": 2,
+        "name": "Mike",
+        "location": "Beijing",
+        "office": "a-102",
+        "phone": {
+            "office": "y32473",
+            "cell": "333333333"
+        },
+        "salary": 50000
+    },
+    {
+        "id": 3,
+        "name": "Guanghui Wang",
+        "location": "US",
+        "office": "303",
+        "phone": {
+            "office": "x4860",
+            "cell": "6192145430"
+        },
+        "salary": 70000
+    },
+    {
+        "id": 4,
+        "name": "Ming Zhang",
+        "location": "UK",
+        "office": "111",
+        "phone": {
+            "office": "90903",
+            "cell": "194543330"
+        },
+        "salary": 60000
+    },
+    {
+        "id": 5,
+        "name": "Adam Fossi",
+        "location": "India",
+        "office": "201",
+        "phone": {
+            "office": "m8360",
+            "cell": "8975454375"
+        },
+        "salary": 100000
+    }
+]

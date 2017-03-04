@@ -1,0 +1,22 @@
+{
+    "PAGE_TITLE": "员工地址簿",
+    "PAGE_CONTENT": "感谢您抽时间查阅并给予面试机会！",
+    "directives.language-select.Language": "语言",
+
+    "li1": "请在服务器环境下运行，否则浏览器可能会拒绝cross request本地data.json文件",
+    "li2": "本地化通过引入angular-i18n/angular-locale_zh.js得以实现, 本例中中文￥，英文$。切换语言金钱符号改变",
+    "li3": "点击表头蓝色文字，实现升序和降序排列",
+    "li4": "点击左上角checkbox可以多选和反选",
+    "li5": "手动一个个选中checkbox会使得左上角checkbox选中",
+    "li6": "选中后可以批量删除",
+    "li7": "add按钮会添加一行空行，请输入后点击update按钮进行保存。请注意连续点击add再update可能不会保存内容，目前是保存最后一行内容",
+    "li8": "点击任何除id的单元格，进入当前行编辑模式，点update可以保存修改的内容",
+
+    "Name": "姓名",
+    "Location": "地址",
+    "Office": "办公室",
+    "Phone": "电话",
+    "cell": "手机",
+    "office": "座机",
+    "Salary": "薪水"
+}
