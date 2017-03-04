@@ -102,7 +102,7 @@ app.controller('employeeController', ['$scope', 'employeeService', function($sco
                 salary
             } = $scope.Employees[$scope.Employees.length - 1];
             $scope.Employees[$scope.Employees.length - 1].showEdit = false;
-            $scope.message = `new record => name:${name}, location:${location}, office: ${office}, salary: ${emp.salary}, officeLine:${phone.office}, cellphone:${phone.cell}, should be sent to server using $http/$resource etc in real world`;
+            $scope.message = `new record => name:${name}, location:${location}, office: ${office}, salary: ${salary}, officeLine:${phone.office}, cellphone:${phone.cell}, should be sent to server using $http/$resource etc in real world`;
         }
     };
 
