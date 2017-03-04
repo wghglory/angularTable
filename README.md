@@ -1,8 +1,6 @@
 # Address book Angularjs app
 
-## My opinions:
-
-#### Explain how to structure an UI project in MVC model with a simple example.
+### Explain how to structure an UI project in MVC model with a simple example.
 
 - if working with nodejs, UI project (this demo) can be placed into a folder call **"public"**
 - css folder have all style files, including bootstrap, custom css(site.css in this case)
@@ -15,7 +13,7 @@
 
 Above is for a small or middle project by using horizontal architecture. For larger project, vertical architecture is better. It's also recommended to put css, images, scripts into a folder called "asset". If working with newest .net platform, these folders can be put into a folder called "www";
 
-#### Explain how AngularJS directive is used, and give a couple of use cases
+### Explain how AngularJS directive is used, and give a couple of use cases
 
 directive includes built-in directives and custom ones.
 
@@ -44,7 +42,7 @@ app.directive("myDir", function() {
 });
 ```
 
-#### Explain how AngularJS scope is defined, and give a couple of use cases
+### Explain how AngularJS scope is defined, and give a couple of use cases
 
 $scope is a JavaScript object which is used for communication between controller and view. Basically, $scope binds a view (DOM element) to the model and functions defined in a controller.
 
@@ -60,7 +58,7 @@ app.controller("myController", function($scope) {
 ```
 so in the view, you can use {{name}} or ng-model="name" to achieve 2-way bindings.
 
-#### How to achieve internalization or localization?
+### How to achieve internalization or localization?
 
 To be honest, I never implement an app with internalization although I ever heard angular has i18n and l10n for this purpose. Localization, from my understanding, is to use local symbols. e.g. $ is US currency while ￥ is for China. This can be achieved by introducing **angular-locale_zh.js**.
 
@@ -76,3 +74,5 @@ Internalization, here I mean shifting between English and Chinese, needs resourc
 6. select all checkboxes/none and multi-delete
 
 There are some small places that can be optimized but I think it's enough for a demo.
+
+
