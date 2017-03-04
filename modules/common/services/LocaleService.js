@@ -44,7 +44,7 @@ angular.module('addressbookApp')
         /**
          * Stop application loading animation when translations are loaded
          */
-        let $html = angular.element(document);
+        let $html = angular.element(document.querySelector('html'));
         const LOADING_CLASS = 'app-loading';
 
         function startLoadingAnimation() {

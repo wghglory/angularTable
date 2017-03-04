@@ -14,9 +14,9 @@ angular.module('addressbookApp')
             template: `<div class="language-select" ng-if="visible">
                             <label>
                                 {{"directives.language-select.Language" | translate}}:
-                                <select ng-model="currentLocaleDisplayName" ng-options="localesDisplayName for localesDisplayName in localesDisplayNames" ng-change="changeLanguage(currentLocaleDisplayName)">
-                                </select>
                             </label>
+                            <select ng-model="currentLocaleDisplayName" ng-options="localesDisplayName for localesDisplayName in localesDisplayNames" ng-change="changeLanguage(currentLocaleDisplayName)">
+                            </select>
                       </div>`,
             controller: ($scope) => {
                 $scope.currentLocaleDisplayName = LocaleService.getLocaleDisplayName();
@@ -24,7 +24,7 @@ angular.module('addressbookApp')
                 $scope.visible = $scope.localesDisplayNames && $scope.localesDisplayNames.length > 1;
 
                 $scope.changeLanguage = (lang) => {
-                    LocaleService.setLocaleByDisplayName(lang);  //中文 English
+                    LocaleService.setLocaleByDisplayName(lang); //中文 English
                     $scope.$emit('reloadDataEvent', lang); // when changing language, employeeController reloads data
                 };
             }

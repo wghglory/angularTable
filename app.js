@@ -1,10 +1,11 @@
 let app = angular.module('addressbookApp', [
         'ngCookies',
+        'ngSanitize',
         'pascalprecht.translate',
         'tmh.dynamicLocale',
         'ngAnimate'
     ])
-    .constant('DEBUG_MODE', /*DEBUG_MODE*/ true /*DEBUG_MODE*/ )
+    .constant('DEBUG_MODE', true)
     .constant('LOCALES', {
         'locales': {
             'zh': '中文',
@@ -29,6 +30,8 @@ let app = angular.module('addressbookApp', [
             suffix: '.json'
         });
 
+        // $translateProvider.useSanitizeValueStrategy('sanitize');
+        $translateProvider.useSanitizeValueStrategy(null);
         $translateProvider.preferredLanguage(LOCALES.preferredLocale);
         $translateProvider.useLocalStorage();
     })

@@ -64,15 +64,15 @@ so in the view, you can use {{name}} or ng-model="name" to achieve 2-way binding
 
 To be honest, I never implement an app with internalization although I ever heard angular has i18n and l10n for this purpose. Localization, from my understanding, is to use local symbols, e.g. $ is for US and ￥ is for China. This can be achieved by introducing **angular-locale_zh.js**.
 
-Internalization, here I mean shifting between English and Chinese, needs resources for both of them, and I just learnt that we can use angular-translate to do it. 
+Internalization, here I mean shifting between English and Chinese, needs resources for both of them, and I just learnt that we can use angular-translate to do it.
 
 ## Instruction and Features
 
 1. Assume using core angular, no angular-ui-grid for filtering, editing, etc
 2. **Add**: add button will add a blank row. After typing anything, assume clicking "Update" will save new record (Update is like Save button)
 3. **Update**: Assume updating one row once
-4. Double click one cell, edit that row; double click any cell in that row again, quit edit mode
-5. Double click one cell and then double click another row => quitting edit mode of previous row and enable edit for current row
+4. Double click cellphone cell, edit that row; double click that cell in that row again, quit edit mode
+5. Double click cellphone cell and then double click cellphone in another row => quitting edit mode of previous row and enable edit for current row
 6. select all checkboxes/none and multi-delete
 
 There are some small places that can be optimized but I think it's enough for a demo.
