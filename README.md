@@ -2,16 +2,20 @@
 
 ### Explain how to structure an UI project in MVC model with a simple example.
 
-- if working with nodejs, UI project (this demo) can be placed into a folder call **"public"**
-- css folder have all style files, including bootstrap, custom css(site.css in this case)
-- modules folder has different modules, like department, employee, each of them may contains controllers, directives, filters, services, views, etc. Common module may be used by other modules
-- my naming convention is module.client.controller.js, because it will be easier to distinguish from nodejs server controller, which I call it module.server.controller.js
-- filters, directives folders are self-explanatory, views usually are for SPA implementation by angular routing
-- lib contains all third-party libraries, which can be installed by bower. Some people call it scripts or bowerComponents
-- app.js is used to config angularjs by injecting modules needed
-- index.html is main page
+* There's no fixed structure for different UI projects. The structure should depend on the requirement, project size, etc
+* For smaller project, we can use horizontal structure as you see this demo.
+* If working with nodejs, UI project (this demo) can be placed into a folder call **"public"**
+* css folder have all style files, including bootstrap, custom css(site.css in this case)
+* Modules folder has different modules, like department, employee, each of them may contains controllers, directives, filters, services, views, etc. Common module may be used by other modules
+* Another horizontal structure will have only 1 controller, directive, service, filter folder, and employeeController and departmentController will be in the controller folder. All services are in service folder.
+* My naming convention is employee.client.controller.js, because it will be easier to distinguish from nodejs server controller, which I call it employee.server.controller.js
+* Filters, directives folders are self-explanatory, views usually are for SPA implementation by angular routing
+* lib contains all third-party libraries, which can be installed by bower. Some people call it scripts or bowerComponents
+* app.js is used to config angularjs by injecting modules needed
+* index.html is main page
+* Here is another structure which is frequently used in .net platform. **Assets** folder contains css, images, scripts folders. If working with newest .net platform, these folders can be put into a folder called "www";
 
-Above is for a small or middle project by using horizontal architecture. For larger project, vertical architecture is better. It's also recommended to put css, images, scripts into a folder called "asset". If working with newest .net platform, these folders can be put into a folder called "www";
+For larger project, vertical architecture is better. So there may be several controllers' folders, one for core feature, one for regular feature. To sum up, structure should be flexible and easy to extend, maintain, and it varies according to our requirements.
 
 ### Explain how AngularJS directive is used, and give a couple of use cases
 
@@ -79,5 +83,3 @@ Internalization, here I mean shifting between English and Chinese, needs resourc
 6. select all checkboxes/none and multi-delete
 
 There are some small places that can be optimized but I think it's enough for a demo.
-
-
