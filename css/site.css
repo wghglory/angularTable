@@ -1,3 +1,11 @@
+/**
+ * @author         Guanghui Wang
+ * @name           addressbookApp.site.css
+ * @date           2017-03-02 15:23:21 
+ * @description    custom layout
+ */
+
+/*bootstrap enhancement*/
 .alert {
     margin-top: 20px;
 }
@@ -17,12 +25,14 @@
     position: relative;
 }
 
+/* languageSelectDirective position */
 .goRight {
     position: absolute;
     right: 10px;
     top: 28px;
 }
 
+/* loader animation */
 .circleLoader {
     position: absolute;
     top: 50%;
@@ -47,6 +57,7 @@
     }
 }
 
+/* angular validation */
 input.ng-invalid {
     background-color: pink;
 }

@@ -1,12 +1,18 @@
+/**
+ * @author Guanghui Wang
+ * @name addressbookApp.employee.client.controller
+ * @date 2017-03-02 15:06:15
+ * @description employee controller interacts with view. Inject employeeService(can be a restful api)
+ */
 'use strict';
 
-// controller, injecting service, which should be a restful api
 app.controller('employeeController', ['$scope', 'employeeService', function($scope, employeeService) {
-    // load data from data.json and initialize
+    // when changing language, reload data for that language
     $scope.$on('reloadDataEvent', (obj, locale) => {
         loadData(locale);
     });
 
+    // call employeeService and load data
     function loadData(lang) {
         employeeService.getAll(lang).then(function(res) {
             $scope.Employees = res.data; //bind all data to employees
@@ -19,11 +25,13 @@ app.controller('employeeController', ['$scope', 'employeeService', function($sco
         });
     }
 
+    // call immediately to initialize data
     loadData();
 
     // double clicking cell to edit, clicking same row again to quit;
     // second time, clicking another row: quit previous row editing and enable current row editing
     $scope.toggleEdit = (emp) => {
+        // for other employees (not current editing one), set showEdit and selected false
         for (let e of $scope.Employees) {
             if (e != emp) {
                 e.showEdit = false;
@@ -33,6 +41,7 @@ app.controller('employeeController', ['$scope', 'employeeService', function($sco
         emp.showEdit = !emp.showEdit;
         emp.selected = !emp.selected;
 
+        // selected id array contains all ids selected, which will be used for multi-delete
         $scope.selectedIds = [];
         $scope.selectedIds.push(emp.id);
         $scope.message = `selected id: ${$scope.selectedIds[0]}`;
@@ -54,13 +63,16 @@ app.controller('employeeController', ['$scope', 'employeeService', function($sco
     // check first checkbox to select all/none
     $scope.toggleAll = () => {
         let toggleStatus = $scope.isAllSelected;
-        angular.forEach($scope.Employees, function(emp) {
+        // all other checkboxes will be selected when checking first one
+        angular.forEach($scope.Employees, (emp) => {
             emp.selected = toggleStatus;
         });
 
+        // clear selectedIds
         $scope.selectedIds = [];
 
         if (toggleStatus) {
+            // add all ids to arr
             for (let emp of $scope.Employees) {
                 $scope.selectedIds.push(emp.id);
             }
@@ -69,7 +81,7 @@ app.controller('employeeController', ['$scope', 'employeeService', function($sco
     }
     // if checking every checkbox one by one, first checkbox should be checked as well
     $scope.optionToggled = () => {
-        $scope.isAllSelected = $scope.Employees.every(function(emp) {
+        $scope.isAllSelected = $scope.Employees.every((emp) => {
             return emp.selected;
         });
     };
@@ -77,13 +89,14 @@ app.controller('employeeController', ['$scope', 'employeeService', function($sco
     // "Save Button": 1 save new record, 2 update modified record
     $scope.save = () => {
 
+        // update modified record
         if ($scope.selectedIds.length) {
-            // update modified record, showEdit is true for that row
+
             let id = $scope.selectedIds[0];
 
             for (let emp of $scope.Employees) {
                 if (emp.id === id) {
-                    emp.showEdit = false;
+                    emp.showEdit = false; //after saving, quit editing mode
                     emp.selected = false;
                     let message = `update record => id:${emp.id}, name:${emp.name}, location:${emp.location}, office: ${emp.office}, salary: ${emp.salary}, officeLine:${emp.phone.office}, cellphone:${emp.phone.cell}`;
                     $scope.message = message;
@@ -93,7 +106,6 @@ app.controller('employeeController', ['$scope', 'employeeService', function($sco
 
         } else {
             // save added record, assume not clicking add again before saving, so last row contains all record
-            // no validation of phone, empty string, etc
             let {
                 name,
                 office,
@@ -109,8 +121,9 @@ app.controller('employeeController', ['$scope', 'employeeService', function($sco
     // multi-delete
     $scope.delete = () => {
         let message = employeeService.delete($scope.selectedIds);
-        let arrLeft = []; //employees that not deleted
+        let arrLeft = []; //employees who are not deleted
 
+        // loop thru all employees and add all left ones to arr
         for (let emp of $scope.Employees) {
             if (!$scope.selectedIds.includes(emp.id)) {
                 arrLeft.push(emp);

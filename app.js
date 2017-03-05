@@ -1,3 +1,10 @@
+/**
+ * @author Guanghui Wang
+ * @name addressbookApp.app
+ * @date 2017-03-02 16:03:09 
+ * @description angular configuration and bootstrap, injecting all services needed
+ */
+
 let app = angular.module('addressbookApp', [
         'ngCookies',
         'ngSanitize',
@@ -16,7 +23,7 @@ let app = angular.module('addressbookApp', [
     // Angular debug info
     .config(($compileProvider, DEBUG_MODE) => {
         if (!DEBUG_MODE) {
-            $compileProvider.debugInfoEnabled(false); // disables AngularJS debug info
+            $compileProvider.debugInfoEnabled(false); // disable AngularJS debug info
         }
     })
     // Angular Translate
@@ -36,6 +43,6 @@ let app = angular.module('addressbookApp', [
         $translateProvider.useLocalStorage();
     })
     // Angular Dynamic Locale
-    .config(function(tmhDynamicLocaleProvider) {
+    .config(tmhDynamicLocaleProvider => {
         tmhDynamicLocaleProvider.localeLocationPattern('lib/angular-i18n/angular-locale_{{locale}}.js');
     });

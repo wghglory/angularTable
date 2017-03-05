@@ -1,8 +1,15 @@
+/**
+ * @author Guanghui Wang
+ * @name addressbookApp.employee.client.service
+ * @date 2017-03-02 15:06:09
+ * @description Service for database/jsondata interaction, which is injected in controller
+ */
 app.service('employeeService', function($http) {
 
     //Get All Employees
     this.getAll = (lang) => {
-        // return $http.get("/api/Employees");
+        // return $http.get("/api/Employees"); // realworld code
+        // based on selected language, load different data
         let data = '';
         switch (lang) {
             case '中文':
@@ -19,6 +26,7 @@ app.service('employeeService', function($http) {
 
     //Delete the Records
     this.delete = (ids) => {
+        // realworld code
         // let request = $http({
         //     method: "delete",
         //     url: "/api/Employees/" + id
@@ -32,7 +40,7 @@ app.service('employeeService', function($http) {
         }
     };
 
-    /*below is not used in this demo, but it's how i implement a restful api*/
+    /********below is not used in this demo, but it's how i implement a restful api**********/
     //Create new record
     this.post = (employee) => {
         let request = $http({
