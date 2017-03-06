@@ -11,7 +11,7 @@
         <table class="table table-bordered table-hover">
             <thead>
                 <tr class="info">
-                    <th rowspan="2"><input type="checkbox" ng-click="toggleAll()" ng-model="isAllSelected"></th>
+                    <th rowspan="2"><input type="checkbox" ng-click="toggleAll()" ng-model="isAllSelected" ng-disabled="checkboxDisable"></th>
                     <th rowspan="2">ID</th>
                     <th rowspan="2">
                         <a href="#" ng-click="sortType = 'name'; sortReverse = !sortReverse">
@@ -62,7 +62,7 @@
             </thead>
             <tbody>
                 <tr ng-repeat="emp in Employees | orderBy:sortType:sortReverse | filter:searchName">
-                    <td><input type="checkbox" ng-click="saveIds(emp.id)" ng-model="emp.selected" ng-change="optionToggled()"></td>
+                    <td><input type="checkbox" ng-click="saveIds(emp.id)" ng-model="emp.selected" ng-change="optionToggled()" ng-disabled="checkboxDisable"></td>
                     <td>{{emp.id}}</td>
                     <td>
                         <span ng-show="!emp.showEdit">{{emp.name}}</span>

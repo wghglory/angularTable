@@ -22,6 +22,7 @@ app.controller('employeeController', ['$scope', 'employeeService', function($sco
             }
             $scope.selectedIds = []; //array contains all selected ids, for multi-delete
             $scope.isAllSelected = false; //default check all is false
+            $scope.checkboxDisable = false; //default
         });
     }
 
@@ -38,13 +39,19 @@ app.controller('employeeController', ['$scope', 'employeeService', function($sco
                 e.selected = false;
             }
         }
-        emp.showEdit = !emp.showEdit;
-        emp.selected = !emp.selected;
 
-        // selected id array contains all ids selected, which will be used for multi-delete
-        $scope.selectedIds = [];
-        if (emp.showEdit) {
+        $scope.isAllSelected = false; // first checkbox uncheck
+        $scope.selectedIds = []; // selected id array contains all ids selected, which will be used for multi-delete
+
+        // current row
+        emp.selected = !emp.selected;
+        emp.showEdit = !emp.showEdit;
+        if (emp.showEdit) { //editing mode
+            emp.selected = true;
             $scope.selectedIds.push(emp.id);
+            $scope.checkboxDisable = true;
+        } else { //quit editing mode
+            $scope.checkboxDisable = false;
         }
         $scope.message = `selected id: ${$scope.selectedIds[0]}`;
     };
