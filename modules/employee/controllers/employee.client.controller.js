@@ -23,7 +23,7 @@ app.controller('employeeController', ['$scope', 'employeeService', function($sco
             }
             $scope.selectedIds = []; //array contains all selected ids, for multi-delete
             $scope.isAllSelected = false; //default check all is false
-            $scope.checkboxDisable = false; //default
+            $scope.checkboxDisable = false; //default enable checkbox
         });
     }
 

@@ -53,7 +53,8 @@ let app = angular.module('addressbookApp', [
                 templateUrl: 'modules/employee/views/instruction.html'
             })
             .when('/employee', {
-                templateUrl: 'modules/employee/views/employee.html'
+                templateUrl: 'modules/employee/views/employee.html',
+                controller: 'employeeController'
             })
             .otherwise({
                 templateUrl: 'modules/employee/views/instruction.html'
