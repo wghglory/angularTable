@@ -51,7 +51,7 @@ let app = angular.module('addressbookApp', [
         $locationProvider.hashPrefix('');
     }])
     //Angular routing
-    .config(($routeProvider) => {
+    .config(($routeProvider, $locationProvider) => {
         $routeProvider
             .when('/instruction', {
                 templateUrl: 'modules/employee/views/instruction.html'
@@ -62,9 +62,12 @@ let app = angular.module('addressbookApp', [
             .otherwise({
                 templateUrl: 'modules/employee/views/instruction.html'
             });
+
+        // use the HTML5 History API, no # in url
+        $locationProvider.html5Mode(true);
     });
 
-// Fix Facebook's OAuth bug
+// Fix Facebook's OAuth bug, for old routing with #
 if (window.location.hash === '#_=_') {
     window.location.hash = '#!';
 }
