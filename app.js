@@ -16,8 +16,8 @@ let app = angular.module('addressbookApp', [
     .constant('DEBUG_MODE', true)
     .constant('LOCALES', {
         'locales': {
-            'zh': '中文',
-            'en': 'English'
+            'en': 'English',
+            'zh': '中文'
         },
         'preferredLocale': 'en'
     })

@@ -16,7 +16,7 @@ app.controller('employeeController', ['$scope', 'employeeService', function($sco
     function loadData(lang) {
         employeeService.getAll(lang).then(function(res) {
             $scope.Employees = res.data; //bind all data to employees
-            console.log($scope.Employees)
+
             for (let emp of $scope.Employees) {
                 emp.showEdit = false; //add prop showEdit, meaning default disable edit mode. Double click enables editing
                 emp.selected = false; //default none of rows is selected
