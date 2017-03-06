@@ -46,11 +46,7 @@ let app = angular.module('addressbookApp', [
     // Angular Dynamic Locale
     .config(tmhDynamicLocaleProvider => {
         tmhDynamicLocaleProvider.localeLocationPattern('lib/angular-i18n/angular-locale_{{locale}}.js');
-    })
-    .config(['$locationProvider', ($locationProvider) => {
-        $locationProvider.hashPrefix('');
-    }])
-    //Angular routing
+    }) //Angular routing
     .config(($routeProvider, $locationProvider) => {
         $routeProvider
             .when('/instruction', {
