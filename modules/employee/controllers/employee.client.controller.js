@@ -6,9 +6,9 @@
  */
 'use strict';
 
-app.controller('employeeController', ['$scope', 'employeeService', function($scope, employeeService) {
+app.controller('employeeController', ['$scope', '$rootScope', 'employeeService', function($scope, $rootScope, employeeService) {
     // when changing language, reload data for that language
-    $scope.$on('reloadDataEvent', (obj, locale) => {
+    $rootScope.$on('reloadDataEvent', (obj, locale) => {
         loadData(locale);
     });
 
