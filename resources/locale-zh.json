@@ -1,9 +1,14 @@
 {
+    "NAV_APP": "地址簿app",
+    "NAV_INSTRUCTION": "说明",
+    "NAV_EMPLOYEE": "员工",
+
     "PAGE_TITLE": "员工地址簿",
     "PAGE_CONTENT": "欢迎使用Angular表格",
     "directives.language-select.Language": "语言",
 
-    "li1": "请在服务器环境下运行，否则浏览器可能会拒绝cross request本地data.json文件",
+    "PAGE_INSTRUCTION": "请阅读本页面后点击“员工”查看表格",
+    "li1": "请在服务器环境下运行并访问网站根目录localhost/，否则浏览器可能会拒绝cross request本地data.json文件",
     "li2": "本地化通过引入angular-i18n/angular-locale_zh.js得以实现, 本例中中文￥，英文$。切换语言金钱符号改变(薪水列)",
     "li3": "点击表头蓝色文字，实现升序和降序排列",
     "li4": "点击左上角checkbox可以多选和反选",

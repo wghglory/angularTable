@@ -11,124 +11,37 @@
 </head>
 
 <body>
-    <div class="container" data-ng-controller="employeeController">
-        <h1>{{"PAGE_CONTENT" | translate}}</h1>
-        <div ng-translate-language-select class="goRight"></div>
-        <ol>
-            <!-- li{{{"li$" | translate}}}*8 -->
-            <li>{{"li1" | translate}}</li>
-            <li>{{"li2" | translate}}</li>
-            <li>{{"li3" | translate}}</li>
-            <li>{{"li4" | translate}}</li>
-            <li>{{"li5" | translate}}</li>
-            <li>{{"li6" | translate}}</li>
-            <li>{{"li7" | translate}}</li>
-            <li>{{"li8" | translate}}</li>
-        </ol>
-
-
-        <form novalidate name="myForm">
-            <!-- search textbox start -->
-            <div class="form-group">
-                <div class="input-group">
-                    <div class="input-group-addon"><span class="glyphicon glyphicon-search"></span></div>
-                    <input type="text" class="form-control" placeholder="Search by name" ng-model="searchName">
-                </div>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="javascript:void(0);">{{"NAV_APP" | translate}}</a>
             </div>
-            <!-- search textbox end -->
-            <table class="table table-bordered table-hover">
-                <thead>
-                    <tr class="info">
-                        <th rowspan="2"><input type="checkbox" ng-click="toggleAll()" ng-model="isAllSelected"></th>
-                        <th rowspan="2">ID</th>
-                        <th rowspan="2">
-                            <a href="#" ng-click="sortType = 'name'; sortReverse = !sortReverse">
-                            {{"Name" | translate}}
-                            <span ng-show="sortType == 'name' && !sortReverse" class="caret"></span>
-                            <span ng-show="sortType == 'name' && sortReverse" class="caret caret-reversed"></span>
-                        </a>
-                        </th>
-                        <th rowspan="2">
-                            <a href="#" ng-click="sortType = 'location'; sortReverse = !sortReverse">
-                            {{"Location" | translate}}
-                            <span ng-show="sortType == 'location' && !sortReverse" class="caret"></span>
-                            <span ng-show="sortType == 'location' && sortReverse" class="caret caret-reversed"></span>
-                        </a>
-                        </th>
-                        <th rowspan="2">
-                            <a href="#" ng-click="sortType = 'office'; sortReverse = !sortReverse">
-                            {{"Office" | translate}}
-                            <span ng-show="sortType == 'office' && !sortReverse" class="caret"></span>
-                            <span ng-show="sortType == 'office' && sortReverse" class="caret caret-reversed"></span>
-                        </a>
-                        </th>
-                        <th rowspan="2">
-                            <a href="#" ng-click="sortType = 'salary'; sortReverse = !sortReverse">
-                            {{"Salary" | translate}}
-                            <span ng-show="sortType == 'salary' && !sortReverse" class="caret"></span>
-                            <span ng-show="sortType == 'salary' && sortReverse" class="caret caret-reversed"></span>
-                        </a>
-                        </th>
-                        <th colspan="2">{{"Phone" | translate}}</th>
-                    </tr>
-                    <tr class="info">
-                        <th>
-                            <a href="#" ng-click="sortType = 'phone.office'; sortReverse = !sortReverse">
-                            {{"office" | translate}}
-                            <span ng-show="sortType == 'phone.office' && !sortReverse" class="caret"></span>
-                            <span ng-show="sortType == 'phone.office' && sortReverse" class="caret caret-reversed"></span>
-                        </a>
-                        </th>
-                        <th>
-                            <a href="#" ng-click="sortType = 'phone.cell'; sortReverse = !sortReverse">
-                            {{"cell" | translate}}
-                            <span ng-show="sortType == 'phone.cell' && !sortReverse" class="caret"></span>
-                            <span ng-show="sortType == 'phone.cell' && sortReverse" class="caret caret-reversed"></span>
-                        </a>
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr ng-repeat="emp in Employees | orderBy:sortType:sortReverse | filter:searchName">
-                        <td><input type="checkbox" ng-click="saveIds(emp.id)" ng-model="emp.selected" ng-change="optionToggled()"></td>
-                        <td>{{emp.id}}</td>
-                        <td>
-                            <span ng-show="!emp.showEdit">{{emp.name}}</span>
-                            <input ng-show="emp.showEdit" type="text" ng-model="emp.name" class="form-control" required>
-                        </td>
-                        <td>
-                            <span ng-show="!emp.showEdit">{{emp.location}}</span>
-                            <input ng-show="emp.showEdit" type="text" ng-model="emp.location" class="form-control" required>
-                        </td>
-                        <td>
-                            <span ng-show="!emp.showEdit">{{emp.office}}</span>
-                            <input ng-show="emp.showEdit" type="text" ng-model="emp.office" class="form-control" required>
-                        </td>
-                        <td>
-                            <span ng-show="!emp.showEdit">{{emp.salary | currency}}</span>
-                            <input ng-show="emp.showEdit" type="money" ng-model="emp.salary" class="form-control" required ng-pattern="/^\d+(\.\d+)?$/">
-                        </td>
-                        <td>
-                            <span ng-show="!emp.showEdit">{{emp.phone.office}}</span>
-                            <input ng-show="emp.showEdit" type="phone" ng-model="emp.phone.office" class="form-control" required>
-                        </td>
-                        <td ng-dblclick="toggleEdit(emp)">
-                            <span ng-show="!emp.showEdit">{{emp.phone.cell}}</span>
-                            <input ng-show="emp.showEdit" type="phone" ng-model="emp.phone.cell" class="form-control" ng-pattern="/^\d+$/">
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <button type="button" class="btn btn-danger" ng-click="delete()">Delete</button>
-            <button type="button" class="btn btn-primary" ng-click="add()" ng-disabled="myForm.$invalid">Add</button>
-            <button type="button" class="btn btn-success" ng-click="save()" ng-disabled="myForm.$invalid">Save</button>
-        </form>
-        <p>{{myForm.emp.$valid}}</p>
-        <p class="alert alert-success" ng-show="message">{{message}}</p>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#instruction">{{"NAV_INSTRUCTION" | translate}}</a></li>
+                    <li><a href="#employee">{{"NAV_EMPLOYEE" | translate}}</a></li>
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <!-- custom directive for languageSelectDirective -->
+                    <div ng-translate-language-select class="goRight"></div>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+    <div class="container">
+        <h1>{{"PAGE_CONTENT" | translate}}</h1>
+        <!-- angular route -->
+        <div ng-view></div>
     </div>
 </body>
 <!-- bower start -->
 <script src="lib/angular/angular.js"></script>
+<script src="lib/angular-route/angular-route.js"></script>
 <script src="lib/angular-animate/angular-animate.js"></script>
 <script src="lib/angular-cookies/angular-cookies.js"></script>
 <script src="lib/angular-sanitize/angular-sanitize.min.js"></script>
@@ -149,5 +62,6 @@
 <script src="modules/employee/services/employee.client.service.js"></script>
 <script src="modules/employee/controllers/employee.client.controller.js"></script>
 <!-- modules end -->
-
+<!-- custom javascripts are under scripts folder-->
+<script src="scripts/navbar.js"></script>
 </html>

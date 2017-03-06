@@ -1,7 +1,7 @@
 /**
  * @author         Guanghui Wang
  * @name           addressbookApp.site.css
- * @date           2017-03-02 15:23:21 
+ * @date           2017-03-02 15:23:21
  * @description    custom layout
  */
 
@@ -27,9 +27,7 @@
 
 /* languageSelectDirective position */
 .goRight {
-    position: absolute;
-    right: 10px;
-    top: 28px;
+    padding-top:14px;
 }
 
 /* loader animation */

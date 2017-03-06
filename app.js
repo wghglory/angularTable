@@ -1,7 +1,7 @@
 /**
  * @author Guanghui Wang
  * @name addressbookApp.app
- * @date 2017-03-02 16:03:09 
+ * @date 2017-03-02 16:03:09
  * @description angular configuration and bootstrap, injecting all services needed
  */
 
@@ -10,7 +10,8 @@ let app = angular.module('addressbookApp', [
         'ngSanitize',
         'pascalprecht.translate',
         'tmh.dynamicLocale',
-        'ngAnimate'
+        'ngAnimate',
+        'ngRoute'
     ])
     .constant('DEBUG_MODE', true)
     .constant('LOCALES', {
@@ -45,4 +46,25 @@ let app = angular.module('addressbookApp', [
     // Angular Dynamic Locale
     .config(tmhDynamicLocaleProvider => {
         tmhDynamicLocaleProvider.localeLocationPattern('lib/angular-i18n/angular-locale_{{locale}}.js');
+    })
+    .config(['$locationProvider', ($locationProvider) => {
+        $locationProvider.hashPrefix('');
+    }])
+    //Angular routing
+    .config(($routeProvider) => {
+        $routeProvider
+            .when('/instruction', {
+                templateUrl: 'modules/employee/views/instruction.html'
+            })
+            .when('/employee', {
+                templateUrl: 'modules/employee/views/employee.html'
+            })
+            .otherwise({
+                templateUrl: 'modules/employee/views/instruction.html'
+            });
     });
+
+// Fix Facebook's OAuth bug
+if (window.location.hash === '#_=_') {
+    window.location.hash = '#!';
+}
