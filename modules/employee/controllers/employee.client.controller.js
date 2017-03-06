@@ -43,7 +43,9 @@ app.controller('employeeController', ['$scope', 'employeeService', function($sco
 
         // selected id array contains all ids selected, which will be used for multi-delete
         $scope.selectedIds = [];
-        $scope.selectedIds.push(emp.id);
+        if (emp.showEdit) {
+            $scope.selectedIds.push(emp.id);
+        }
         $scope.message = `selected id: ${$scope.selectedIds[0]}`;
     };
 
