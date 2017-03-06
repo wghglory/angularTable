@@ -97,6 +97,8 @@ app.controller('employeeController', ['$scope', 'employeeService', function($sco
 
     // "Save Button": 1 save new record, 2 update modified record
     $scope.save = () => {
+        
+        $scope.checkboxDisable = false;
 
         // update modified record
         if ($scope.selectedIds.length) {
@@ -162,6 +164,7 @@ app.controller('employeeController', ['$scope', 'employeeService', function($sco
         };
         newEmp.showEdit = true; // enable editing for new row
         $scope.Employees.push(newEmp);
+        $scope.checkboxDisable = false;
         $scope.selectedIds = [];
         $scope.message = 'Please type in the empty fields and then click Update to see result. Do not click "add" again before finishing up';
     };
