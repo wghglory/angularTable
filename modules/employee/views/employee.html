@@ -1,101 +1,99 @@
-<section data-ng-controller="employeeController">
-    <form novalidate name="myForm">
-        <!-- search textbox start -->
-        <div class="form-group">
-            <div class="input-group">
-                <div class="input-group-addon"><span class="glyphicon glyphicon-search"></span></div>
-                <input type="text" class="form-control" placeholder="Search by name" ng-model="searchName">
-            </div>
+<form novalidate name="myForm">
+    <!-- search textbox start -->
+    <div class="form-group">
+        <div class="input-group">
+            <div class="input-group-addon"><span class="glyphicon glyphicon-search"></span></div>
+            <input type="text" class="form-control" placeholder="Search by name" ng-model="searchName">
         </div>
-        <!-- / search textbox -->
-        <table class="table table-bordered table-hover">
-            <thead>
-                <tr class="info">
-                    <th rowspan="2"><input type="checkbox" ng-click="toggleAll()" ng-model="isAllSelected" ng-disabled="checkboxDisable"></th>
-                    <th rowspan="2">ID</th>
-                    <th rowspan="2">
-                        <a href="#" ng-click="sortType = 'name'; sortReverse = !sortReverse">
+    </div>
+    <!-- / search textbox -->
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr class="info">
+                <th rowspan="2"><input type="checkbox" ng-click="toggleAll()" ng-model="isAllSelected" ng-disabled="checkboxDisable"></th>
+                <th rowspan="2">ID</th>
+                <th rowspan="2">
+                    <a href="#" ng-click="sortType = 'name'; sortReverse = !sortReverse">
                         {{"Name" | translate}}
                         <span ng-show="sortType == 'name' && !sortReverse" class="caret"></span>
                         <span ng-show="sortType == 'name' && sortReverse" class="caret caret-reversed"></span>
                     </a>
-                    </th>
-                    <th rowspan="2">
-                        <a href="#" ng-click="sortType = 'location'; sortReverse = !sortReverse">
+                </th>
+                <th rowspan="2">
+                    <a href="#" ng-click="sortType = 'location'; sortReverse = !sortReverse">
                         {{"Location" | translate}}
                         <span ng-show="sortType == 'location' && !sortReverse" class="caret"></span>
                         <span ng-show="sortType == 'location' && sortReverse" class="caret caret-reversed"></span>
                     </a>
-                    </th>
-                    <th rowspan="2">
-                        <a href="#" ng-click="sortType = 'office'; sortReverse = !sortReverse">
+                </th>
+                <th rowspan="2">
+                    <a href="#" ng-click="sortType = 'office'; sortReverse = !sortReverse">
                         {{"Office" | translate}}
                         <span ng-show="sortType == 'office' && !sortReverse" class="caret"></span>
                         <span ng-show="sortType == 'office' && sortReverse" class="caret caret-reversed"></span>
                     </a>
-                    </th>
-                    <th rowspan="2">
-                        <a href="#" ng-click="sortType = 'salary'; sortReverse = !sortReverse">
+                </th>
+                <th rowspan="2">
+                    <a href="#" ng-click="sortType = 'salary'; sortReverse = !sortReverse">
                         {{"Salary" | translate}}
                         <span ng-show="sortType == 'salary' && !sortReverse" class="caret"></span>
                         <span ng-show="sortType == 'salary' && sortReverse" class="caret caret-reversed"></span>
                     </a>
-                    </th>
-                    <th colspan="2">{{"Phone" | translate}}</th>
-                </tr>
-                <tr class="info">
-                    <th>
-                        <a href="#" ng-click="sortType = 'phone.office'; sortReverse = !sortReverse">
+                </th>
+                <th colspan="2">{{"Phone" | translate}}</th>
+            </tr>
+            <tr class="info">
+                <th>
+                    <a href="#" ng-click="sortType = 'phone.office'; sortReverse = !sortReverse">
                         {{"office" | translate}}
                         <span ng-show="sortType == 'phone.office' && !sortReverse" class="caret"></span>
                         <span ng-show="sortType == 'phone.office' && sortReverse" class="caret caret-reversed"></span>
                     </a>
-                    </th>
-                    <th>
-                        <a href="#" ng-click="sortType = 'phone.cell'; sortReverse = !sortReverse">
+                </th>
+                <th>
+                    <a href="#" ng-click="sortType = 'phone.cell'; sortReverse = !sortReverse">
                         {{"cell" | translate}}
                         <span ng-show="sortType == 'phone.cell' && !sortReverse" class="caret"></span>
                         <span ng-show="sortType == 'phone.cell' && sortReverse" class="caret caret-reversed"></span>
                     </a>
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr ng-repeat="emp in Employees | orderBy:sortType:sortReverse | filter:searchName">
-                    <td><input type="checkbox" ng-click="saveIds(emp.id)" ng-model="emp.selected" ng-change="optionToggled()" ng-disabled="checkboxDisable"></td>
-                    <td>{{emp.id}}</td>
-                    <td>
-                        <span ng-show="!emp.showEdit">{{emp.name}}</span>
-                        <input ng-show="emp.showEdit" type="text" ng-model="emp.name" class="form-control" required>
-                    </td>
-                    <td>
-                        <span ng-show="!emp.showEdit">{{emp.location}}</span>
-                        <input ng-show="emp.showEdit" type="text" ng-model="emp.location" class="form-control" required>
-                    </td>
-                    <td>
-                        <span ng-show="!emp.showEdit">{{emp.office}}</span>
-                        <input ng-show="emp.showEdit" type="text" ng-model="emp.office" class="form-control" required>
-                    </td>
-                    <td>
-                        <span ng-show="!emp.showEdit">{{emp.salary | currency}}</span>
-                        <input ng-show="emp.showEdit" type="money" ng-model="emp.salary" class="form-control" required ng-pattern="/^\d+(\.\d+)?$/">
-                    </td>
-                    <td>
-                        <span ng-show="!emp.showEdit">{{emp.phone.office}}</span>
-                        <input ng-show="emp.showEdit" type="phone" ng-model="emp.phone.office" class="form-control" required>
-                    </td>
-                    <td ng-dblclick="toggleEdit(emp)">
-                        <span ng-show="!emp.showEdit">{{emp.phone.cell}}</span>
-                        <input ng-show="emp.showEdit" type="phone" ng-model="emp.phone.cell" class="form-control" ng-pattern="/^\d+$/" required>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <!-- buttons -->
-        <button type="button" class="btn btn-danger" ng-click="delete()">Delete</button>
-        <button type="button" class="btn btn-primary" ng-click="add()" ng-disabled="myForm.$invalid">Add</button>
-        <button type="button" class="btn btn-success" ng-click="save()" ng-disabled="myForm.$invalid">Save</button>
-    </form>
-    <!-- message -->
-    <p class="alert alert-success" ng-show="message">{{message}}</p>
-</section>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="emp in Employees | orderBy:sortType:sortReverse | filter:searchName">
+                <td><input type="checkbox" ng-click="saveIds(emp.id)" ng-model="emp.selected" ng-change="optionToggled()" ng-disabled="checkboxDisable"></td>
+                <td>{{emp.id}}</td>
+                <td>
+                    <span ng-show="!emp.showEdit">{{emp.name}}</span>
+                    <input ng-show="emp.showEdit" type="text" ng-model="emp.name" class="form-control" required>
+                </td>
+                <td>
+                    <span ng-show="!emp.showEdit">{{emp.location}}</span>
+                    <input ng-show="emp.showEdit" type="text" ng-model="emp.location" class="form-control" required>
+                </td>
+                <td>
+                    <span ng-show="!emp.showEdit">{{emp.office}}</span>
+                    <input ng-show="emp.showEdit" type="text" ng-model="emp.office" class="form-control" required>
+                </td>
+                <td>
+                    <span ng-show="!emp.showEdit">{{emp.salary | currency}}</span>
+                    <input ng-show="emp.showEdit" type="money" ng-model="emp.salary" class="form-control" required ng-pattern="/^\d+(\.\d+)?$/">
+                </td>
+                <td>
+                    <span ng-show="!emp.showEdit">{{emp.phone.office}}</span>
+                    <input ng-show="emp.showEdit" type="phone" ng-model="emp.phone.office" class="form-control" required>
+                </td>
+                <td ng-dblclick="toggleEdit(emp)">
+                    <span ng-show="!emp.showEdit">{{emp.phone.cell}}</span>
+                    <input ng-show="emp.showEdit" type="phone" ng-model="emp.phone.cell" class="form-control" ng-pattern="/^\d+$/" required>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <!-- buttons -->
+    <button type="button" class="btn btn-danger" ng-click="delete()">Delete</button>
+    <button type="button" class="btn btn-primary" ng-click="add()" ng-disabled="myForm.$invalid">Add</button>
+    <button type="button" class="btn btn-success" ng-click="save()" ng-disabled="myForm.$invalid">Save</button>
+</form>
+<!-- message -->
+<p class="alert alert-success" ng-show="message">{{message}}</p>
