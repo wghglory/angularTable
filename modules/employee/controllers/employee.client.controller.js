@@ -2,19 +2,20 @@
  * @author Guanghui Wang
  * @name addressbookApp.employee.client.controller
  * @date 2017-03-02 15:06:15
- * @description employee controller interacts with view. Inject employeeService(can be a restful api)
+ * @description employee controller interacts with view. Inject EmployeeService(can be a restful api)
  */
 'use strict';
 
-app.controller('employeeController', ['$scope', '$rootScope', 'employeeService', function($scope, $rootScope, employeeService) {
+app.controller('EmployeeController', ['$scope', '$rootScope', 'EmployeeService', 'LocaleService', function($scope, $rootScope, EmployeeService, LocaleService) {
     // when changing language, reload data for that language
     $rootScope.$on('reloadDataEvent', (obj, locale) => {
-        loadData(locale);
+        loadData();
     });
 
-    // call employeeService and load data
-    function loadData(lang) {
-        employeeService.getAll(lang).then(function(res) {
+    // call EmployeeService and load data
+    function loadData() {
+        let language = LocaleService.getLocaleDisplayName();
+        EmployeeService.getAll(language).then(function(res) {
             $scope.Employees = res.data; //bind all data to employees
 
             for (let emp of $scope.Employees) {
@@ -132,7 +133,7 @@ app.controller('employeeController', ['$scope', '$rootScope', 'employeeService',
 
     // multi-delete
     $scope.delete = () => {
-        let message = employeeService.delete($scope.selectedIds);
+        let message = EmployeeService.delete($scope.selectedIds);
         let arrLeft = []; //employees who are not deleted
 
         // loop thru all employees and add all left ones to arr

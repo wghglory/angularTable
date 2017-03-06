@@ -4,7 +4,7 @@
  * @date 2017-03-02 15:06:09
  * @description Service for database/jsondata interaction, which is injected in controller
  */
-app.service('employeeService', function($http) {
+app.service('EmployeeService', function($http) {
 
     //Get All Employees
     this.getAll = (lang) => {
