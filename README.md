@@ -71,7 +71,7 @@ Internalization, here I mean shifting between English and Chinese, needs resourc
 
 ## Screenshot
 
-![](http://om1o84p1p.bkt.clouddn.com/2017-03-03-14886111954269.jpg)
+![Screenshot](http://om1o84p1p.bkt.clouddn.com/2017-03-03-14886111954269.jpg)
 
 ## Instruction and Features
 
